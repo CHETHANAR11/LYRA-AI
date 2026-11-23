@@ -1,0 +1,14 @@
+
+# Ignore dependencies
+node_modules/
+
+# Ignore environment variables
+.env
+.env.*
+
+# Allow example environment files
+!.env.example
+
+# Ignore build folders
+dist/
+build/
