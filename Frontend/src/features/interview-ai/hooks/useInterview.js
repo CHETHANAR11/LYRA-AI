@@ -8,50 +8,30 @@ export const useInterview = () => {
 
     const context = useContext(InterviewContext)
     const { interviewId } = useParams()
-
     if (!context) {
         throw new Error("useInterview must be used within an InterviewProvider")
     }
-
     const { loading, setLoading, report, setReport, reports, setReports } = context
-
-    // const generateReport = async ({ jobDescription, selfDescription, resumeFile }) => {
-    //     setLoading(true)
-    //     let response = null
-    //     try {
-    //         response = await generateInterviewReport({ jobDescription, selfDescription, resumeFile })
-    //         setReport(response.interviewReport)
-    //     } catch (error) {
-    //         console.log(error)
-    //     } finally {
-    //         setLoading(false)
-    //     }
-
-    //     return response.interviewReport
-    // }
-    const generateReport = async ({ jobDescription, selfDescription, resumeFile }) => {
+    
+    const generateReport=async({jobDescription,selfDescription,resumeFile }) => {
     setLoading(true)
-
     try {
         const response = await generateInterviewReport({
             jobDescription,
             selfDescription,
             resumeFile
         })
-
         setReport(response.interviewReport)
         return response.interviewReport
-
     } catch (error) {
         console.log(error)
         return null
-
     } finally {
         setLoading(false)
     }
 }
 
-    const getReportById = async (interviewId) => {
+    const getReportById = async(interviewId)=> {
         setLoading(true)
         let response = null
         try {
@@ -65,7 +45,7 @@ export const useInterview = () => {
         return response.interviewReport
     }
 
-    const getReports = async () => {
+    const getReports = async()=> {
         setLoading(true)
         let response = null
         try {
@@ -80,7 +60,7 @@ export const useInterview = () => {
         return response.interviewReports
     }
 
-    const getResumePdf = async (interviewReportId) => {
+    const getResumePdf = async(interviewReportId)=> {
         setLoading(true)
         let response = null
         try {
